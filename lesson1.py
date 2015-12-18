@@ -16,4 +16,11 @@
 # page = contents of a web page
 page =('<div id="top_bin"><div id="top_content" class="width960">'
 '<div class="udacity float-left"><a href="http://udacity.com">')
-start_link = page.find('<a href=')
+
+start_link = page.find('<a href=') + 9 #finds the start of URL, by skipping to
+# directly after <a href="
+
+end_link = page.find('">', start_link) #finds the end of the URL
+url = page[start_link:end_link] #assigns URL to the link, as defined by the variables
+
+print url #prints http://udacity.com
