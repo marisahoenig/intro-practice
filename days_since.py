@@ -38,19 +38,8 @@ def findDays(birthday, current_date):
             month +=1
         age += c_day
 
+
     return age, month
 
 
 print findDays('03/14/96', '05/22/96')
-
-
-
-
-
-
-    # days = daysOfMonths[b_month-1] - b_day
-    # b_month += 1
-    # while b_month < c_month:
-    #     days += daysOfMonths[b_month-1]
-    #     b_month += 1
-    # days +=
