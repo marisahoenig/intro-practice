@@ -22,10 +22,12 @@ def findDays(birthday, current_date): #takes birthday and current_date as inputs
     c_day = int(current_date[3:5])
     c_year = int(current_date[6:])
 
+    year = b_year
+    month = b_month
+
     if b_year == c_year and b_month == c_month: # if birth month and year  are equal to the current month and year,
         age = c_day - b_day                     # it subtracts the days
     else: # finds the leftover days in a month (ex: if birthday is the 17th of a month, it returns the days remaining in the month)
-        year = b_year
         days = isLeapYear(year)
         age = days[b_month-1] - b_day # sets age to leftover days in month
         month = b_month + 1
@@ -42,7 +44,8 @@ def findDays(birthday, current_date): #takes birthday and current_date as inputs
     while year == c_year and month != c_month: #if it is the same year and not same month
         age += daysOfMonths[month-1] #adds number of days in month
         month += 1 # iterates through months
-    age += c_day # else, when in same year and month as current, it adds those days to age
+    if b_year != c_year and b_month != c_month:
+        age += c_day # else, when in same year and month as current, it adds those days to age
 
     return age # returns age in days
 
