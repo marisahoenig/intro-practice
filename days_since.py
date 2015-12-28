@@ -46,7 +46,8 @@ def findDays(birthday, current_date): #takes birthday and current_date as inputs
         month += 1 # iterates through months
     age += c_day # else, when in same year and month as current, it adds those days to age
     if b_year == c_year and b_month == c_month:
-        age -= c_day
+        age -= c_day # makes sure that it won't add the days of the month
+
     return age # returns age in days
 
 input_birthday = raw_input('Enter your birthday in the form MM/DD/YYYY: ')
