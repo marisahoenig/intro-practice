@@ -44,5 +44,6 @@ def findDays(birthday, current_date): #takes birthday and current_date as inputs
 
     return age # returns age in days
 
-
-print findDays('05/10/1990', '12/27/2015')
+input_birthday = raw_input('Enter your birthday in the form MM/DD/YYYY: ')
+input_date = raw_input('Enter the current date in the form MM/DD/YYYY: ')
+print "You've been alive for " + str(findDays(input_birthday, input_date)) + " days!"
