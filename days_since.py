@@ -27,9 +27,11 @@ def findDays(birthday, current_date): #takes birthday and current_date as inputs
     else: # finds the leftover days in a month (ex: if birthday is the 17th of a month, it returns the days remaining in the month)
         year = b_year
         days = isLeapYear(year)
-        leftover_days_in_month = days[b_month-1] - b_day
-        age = leftover_days_in_month
+        age = days[b_month-1] - b_day # sets age to leftover days in month
         month = b_month + 1
+        if month == 13: # if month is 13, it reassigns it to 1 (January)
+            month = 1
+            year += 1 # new year
     while year < c_year: # while the year is less than current year
         days = isLeapYear(year)
         age += days[month-1] # finds number of days in the month and adds to age
