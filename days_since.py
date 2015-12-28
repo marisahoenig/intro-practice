@@ -20,26 +20,30 @@ def findDays(birthday, current_date):
     c_day = int(current_date[3:5])
     c_year = int(current_date[6:])
 
+    year = b_year
+    days = isLeapYear(year)
 
     if b_year == c_year and b_month == c_month:
         age = c_day - b_day
     else:
-        days = isLeapYear(b_year)
         leftover_days_in_month = days[b_month-1] - b_day
         age = leftover_days_in_month
         month = b_month + 1
-        year = b_year
-    if month == 13:
-        month = 1
-        year += 1
-    if year <= c_year:
-        if month != c_month:
-            age += daysOfMonths[month-1]
-            month +=1
-        age += c_day
+    while year < c_year:
+        age += days[month-1]
+        month +=1
+        if month == 13:
+            month = 1
+            year += 1
+            if year == 100:
+                year = 00
+    while year == c_year and month != c_month:
+        age += daysOfMonths[month-1]
+        month += 1
+    age += c_day
 
 
-    return age, month
+    return age, month, year
 
 
-print findDays('03/14/96', '05/22/96')
+print findDays('09/14/96', '12/27/97')
